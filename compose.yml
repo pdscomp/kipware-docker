@@ -1,0 +1,32 @@
+services:
+  kipware-runner:
+    image: ghcr.io/pdscomp/kipware-runner:latest
+    build:
+      context: .
+      target: runner
+      pull: true
+      tags:
+        - "ghcr.io/pdscomp/kipware-runner:latest"
+        - "ghcr.io/pdscomp/kipware-runner:${TAG_DATE:-latest}-${TAG_COMMIT:-dev}"
+    container_name: builder-runner
+    hostname: entware-builder-runner
+    volumes:
+      - ${HOME:-~}:/home/appuser
+    stdin_open: true # Equivalent to --interactive
+    tty: true        # Equivalent to --tty
+
+  kipware-devel:
+    image: ghcr.io/pdscomp/kipware-devel:latest
+    build:
+      context: .
+      target: devel
+      pull: true
+      tags:
+        - "ghcr.io/pdscomp/kipware-devel:latest"
+        - "ghcr.io/pdscomp/kipware-devel:${TAG_DATE:-latest}-${TAG_COMMIT:-dev}"
+    container_name: builder-devel
+    hostname: entware-builder-devel
+    volumes:
+      - ${HOME:-~}:/home/appuser
+    stdin_open: true # Equivalent to --interactive
+    tty: true        # Equivalent to --tty
