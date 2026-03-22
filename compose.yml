@@ -9,7 +9,7 @@ services:
         - "ghcr.io/pdscomp/kipware-runner:latest"
         - "ghcr.io/pdscomp/kipware-runner:${TAG_DATE:-latest}-${TAG_COMMIT:-dev}"
     container_name: builder-runner
-    hostname: entware-builder-runner
+    hostname: kipware-builder-runner
     volumes:
       - ${HOME:-~}:/home/appuser
     stdin_open: true # Equivalent to --interactive
@@ -25,7 +25,7 @@ services:
         - "ghcr.io/pdscomp/kipware-devel:latest"
         - "ghcr.io/pdscomp/kipware-devel:${TAG_DATE:-latest}-${TAG_COMMIT:-dev}"
     container_name: builder-devel
-    hostname: entware-builder-devel
+    hostname: kipware-builder-devel
     volumes:
       - ${HOME:-~}:/home/appuser
     stdin_open: true # Equivalent to --interactive
