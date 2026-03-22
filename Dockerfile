@@ -63,6 +63,7 @@ RUN pip3 install \
 	service_identity
 
 RUN npm install -g @github/copilot
+RUN npm install -g @google/gemini-cli
 
 ENV LANG=en_US.utf8
 
